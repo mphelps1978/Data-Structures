@@ -75,23 +75,36 @@ class LinkedList:
             return ret_value
 
     def remove_tail(self):
-        if self.tail is None:  # empty list
+        """
+        Remove last node
+        (Head)1 -> 2 -> 3(Tail)
+        (Head)1 -> 2(Tail)
+        """
+        # if we have an empty linked list
+        if self.head is None:
             return None
+        else:
 
-        elif self.head == self.tail:  # only one node
-            old_tail = self.tail
-            self.head = None
-            self.tail = None
-            return old_tail
+            # if the list has 1 node, set head and tail to 'none'
+            ret_value = self.tail.get_value()
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
 
-        else:  # more than one node
-            current = self.head
-            new_tail = current
-            while current is not self.tail:
-                new_tail = current
-                current = current.next_node
-            self.tail = new_tail
-            self.tail.set_next_node(None)
+            # if we have 2 or more nodes
+            # we have to start at the head and move down the linked list
+            # until we get to the node right before the tail
+            # iterate over our linked list
+            else:
+                pre = self.head
+                temp = self.head.next_node
+                while temp.next_node is not None:
+                    pre = pre.next_node
+                pre.next_node = None
+                self.tail = pre
+            return ret_value
+
+        # print(f'New Tail is {self.tail.get_value()}') <-- debugging
 
     def contains(self, value):
         # loop through list until next pointer is none

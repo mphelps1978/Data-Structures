@@ -86,15 +86,21 @@ class LinkedList:
         else:
 
             # if the list has 1 node, set head and tail to 'none'
+            # but first, let's grab the value of the current tail before we make the changes
             ret_value = self.tail.get_value()
+
+            # Now we can get to work
             if self.head == self.tail:
                 self.head = None
                 self.tail = None
+                return ret_value
 
             # if we have 2 or more nodes
-            # we have to start at the head and move down the linked list
+            # we have to start at the head iterate through the linked list
             # until we get to the node right before the tail
-            # iterate over our linked list
+            # update the same node's next_node to None
+            # then define that node as the new tail
+
             else:
                 pre = self.head
                 temp = self.head.next_node
@@ -103,8 +109,6 @@ class LinkedList:
                 pre.next_node = None
                 self.tail = pre
             return ret_value
-
-        # print(f'New Tail is {self.tail.get_value()}') <-- debugging
 
     def contains(self, value):
         # loop through list until next pointer is none

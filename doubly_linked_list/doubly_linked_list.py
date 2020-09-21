@@ -10,20 +10,6 @@ class ListNode:
         self.value = value
         self.next = next
 
-    # let's create some methods to make inserting nodes easier
-
-    # def insert_after(self, value):
-    #     current_next = self.next
-    #     self.next = ListNode(value, self, current_next)
-    #     if current_next:
-    #         current_next.prev = self.next
-
-    # def insert_before(self, value):
-    #     current_prev = self.prev
-    #     self.prev = ListNode(value, current_prev, self)
-    #     if current_prev:
-    #         current_prev.next = self.prev
-
     # Done in class
     def delete(self):
         if self.prev:
